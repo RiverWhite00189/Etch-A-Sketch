@@ -38,6 +38,10 @@ function gridKiller() {
 let reset = document.querySelector("#reset-btn");
 reset.addEventListener("click", () => {
     let numBoxes = prompt("Enter the number of squares per side: ");
+    while (numBoxes > 100) {
+        numBoxes = prompt("My friend let's pick a smaller number please...")
+    }
+    
     gridKiller();
     gridMaker(numBoxes);
 });
