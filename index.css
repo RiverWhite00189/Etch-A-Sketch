@@ -1,0 +1,11 @@
+.row {
+    display: flex;
+}
+
+.clean-box {
+    background-color: aliceblue;
+}
+
+.dirty-box {
+    background-color: black;
+}
