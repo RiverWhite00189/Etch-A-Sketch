@@ -1,6 +1,6 @@
 //main grid 
 let grid = document.querySelector("div");
-const MAXPX = 660;
+const MAXPX = 600;
 
 function gridMaker(numBoxes) {
     let boxPx = MAXPX / numBoxes;
@@ -13,18 +13,21 @@ function gridMaker(numBoxes) {
 
         for (let j = 0; j < numBoxes; j++) {
             let box = document.createElement("div");
-            let newId = i + 1 + "-" + (j + 1);
-            box.setAttribute("id", newId);
-            box.setAttribute("class", "box clean-box");
-            //box.setAttribute("class", "clean-box");
-            //box.textContent = '*'
+            //let newId = i + 1 + "-" + (j + 1);
+            //box.setAttribute("id", newId);
+            box.setAttribute("class", "box");
             box.style.width = boxPx +"px";
             box.style.height = boxPx +"px";
             row.appendChild(box);
 
-            box.addEventListener("mouseover", () => {
+            box.addEventListener("mouseover", (e) => {
                 //box.removeAttribute("class", "clean-box");
-                box.setAttribute("class", "box dirty-box");
+                //box.setAttribute("class", "box dirty-box");
+                let curr = box.style.opacity;
+                curr = Number(curr) + 0.1;
+                if (curr <= 1) {
+                    box.style.opacity = curr;
+                }
             });
         }
     }
@@ -41,7 +44,7 @@ reset.addEventListener("click", () => {
     while (numBoxes > 100) {
         numBoxes = prompt("My friend let's pick a smaller number please...")
     }
-    
+
     gridKiller();
     gridMaker(numBoxes);
 });
